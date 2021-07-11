@@ -5,8 +5,37 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WpfListBoxSample"
         mc:Ignorable="d"
+        d:DataContext="{d:DesignInstance local:MainWindowViewModel}"
         Title="MainWindow" Height="450" Width="800">
     <Grid>
-        
+        <ListBox ItemsSource="{Binding Path=ListItems}"
+                 HorizontalContentAlignment="Stretch">
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="1*"
+                                              MinWidth="200" />
+                            <ColumnDefinition Width="2*"
+                                              MinWidth="200" />
+                        </Grid.ColumnDefinitions>
+
+                        <Border Grid.Column="0"
+                                BorderBrush="{DynamicResource {x:Static SystemColors.ActiveCaptionBrushKey}}"
+                                BorderThickness="1">
+                            <TextBlock Text="{Binding Path=Text1}" />
+                        </Border>
+
+                        <Border Grid.Column="1"
+                                BorderBrush="{DynamicResource {x:Static SystemColors.ActiveCaptionBrushKey}}"
+                                BorderThickness="1">
+                            <TextBlock Text="{Binding Path=Text2}" />
+                        </Border>
+                    </Grid>
+
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
     </Grid>
 </Window>
